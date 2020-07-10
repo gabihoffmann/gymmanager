@@ -20,8 +20,20 @@ module.exports = {
         const month = `0${date.getUTCMonth() + 1}`.slice(-2)
         const day = `0${date.getUTCDate()}`.slice(-2)
 
-        return `${year}-${month}-${day}`
+        return {
+            iso: `${year}-${month}-${day}`,
+            birthDay: `${day}/${month}`
+        }
 
     },
 
+    blood: function(type){
+        let rh = type[type.length-1]
+        let blood = type.slice(0,(type.length -1))
+
+        rh == 1 ? rh = '+' : rh = '-'
+        
+        
+        return blood+rh
+    },
 }

@@ -1,7 +1,19 @@
 const fs = require('fs')
 const Intl = require('intl')
 const data = require('../data/data.json')
-const {age, date} = require('../utils/utils')
+const {age, date} = require('../utils')
+
+
+//index
+exports.index = (req,res) => {
+
+    const instructors = data.instructors.map(instructor => instructor = {
+            ... instructor,
+            services: instructor.services.split(',')
+    })
+
+    return res.render('instructors/index', {instructors})
+}
 
 //show
 exports.show = (req,res) =>{
@@ -36,9 +48,13 @@ exports.post = (req,res) => {
     //desestruturando req.body - para pegar apenas os valores que necessita
     let {avatarUrl,name,birth,gender,services} = req.body
 
-    //criando uma chave id
-    const id = Number(data.instructors.length + 1)
-    // modificando data - formato do marco zero
+    let id = 1
+    const lastInstructor = data.instructors[data.instructors.length -1]
+
+    if(lastInstructor){
+        id = lastInstructor.id + 1
+    }
+
     birth = Date.parse(req.body.birth)
     const created_at = Date.now()
     
@@ -73,7 +89,7 @@ exports.edit = (req,res) => {
 
     const instructor = {
         ...foundInstructor,
-        birth : date(foundInstructor.birth)
+        birth : date(foundInstructor.birth).iso
     }
 
     return res.render('instructors/edit', { instructor })
@@ -128,13 +144,8 @@ exports.delete = (req,res) => {
 
 }
 
-//index
-exports.index = (req,res) => {
 
-    const instructors = data.instructors.map(instructor => instructor = {
-            ... instructor,
-            services: instructor.services.split(',')
-    })
-
-    return res.render('instructors/index', {instructors})
+//create - render
+exports.create = (req,res)=>{
+    res.render('instructors/create')
 }
