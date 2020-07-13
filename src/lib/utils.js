@@ -1,5 +1,5 @@
 module.exports = {
-    age: function(timestamp){
+    age(timestamp){
         const today = new Date()
         const birthday = new Date(timestamp)
 
@@ -13,7 +13,7 @@ module.exports = {
         return age
     },
 
-    date: function(timestamp){
+    date(timestamp){
         const date = new Date(timestamp)
 
         const year = date.getUTCFullYear()
@@ -27,7 +27,7 @@ module.exports = {
 
     },
 
-    blood: function(type){
+    blood(type){
         let rh = type[type.length-1]
         let blood = type.slice(0,(type.length -1))
 
