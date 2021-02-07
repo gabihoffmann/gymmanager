@@ -2,44 +2,43 @@
 
 {% block content %}
    <div class="card">
-   <section class="avatar" 
-      style="background: url('{{instructor.avatarUrl}}')
+      <section class="avatar" style="background: url('{{instructor.avatarUrl}}')
       no-repeat center center / cover"></section>
 
-   <section class="details">
-      <h3>Detalhes</h3>
-      <div class="item">
-         <div>Instrutor</div>
-         <div>{{instructor.name}}</div>
-      </div>
-
-      <div class="item">
-         <div>Idade</div>
-         <div>{{instructor.age}}</div>
-      </div>
-
-      <div class="item">
-         <div>Sexo</div>
-         <div>{{"Feminino" if instructor.gender == 'F' else "Masculino"}}</div>
-      </div>
-
-      <div class="item">
-         <div>Acompanhamento</div>
-         <div>
-             {% for service in instructor.services %}
-                <span>{{service}}</span>
-             {% endfor %}
+      <section class="details">
+         <h3>Detalhes</h3>
+         <div class="item">
+            <div>Instrutor</div>
+            <div>{{instructor.name}}</div>
          </div>
-      </div>
 
-      <div class="item">
-         <div>Desde</div>
-         <div>{{instructor.created_at}}</div>
-      </div>
+         <div class="item">
+            <div>Idade</div>
+            <div>{{instructor.age}}</div>
+         </div>
 
-      <a href="/instructors/{{instructor.id}}/edit" class="button">Editar</a>
+         <div class="item">
+            <div>Sexo</div>
+            <div>{{"Feminino" if instructor.gender == 'F' else "Masculino"}}</div>
+         </div>
 
-   </section>
+         <div class="item">
+            <div>Acompanhamento</div>
+            <div>
+               {% for service in instructor.services %}
+                  <span>{{service}}</span>
+               {% endfor %}
+            </div>
+         </div>
+
+         <div class="item">
+            <div>Desde</div>
+            <div>{{instructor.created_at}}</div>
+         </div>
+
+         <a href="/instructors/{{instructor.id}}/edit" class="button">Editar</a>
+
+      </section>
    </div>
 
 {% endblock %}

@@ -1,32 +1,21 @@
 <div class="item">
     <div>Avatar URL</div>
     <div>
-        <input 
-            type="url"
-            name="avatarUrl"
-            placeholder="http://"
-            value="{{instructor.avatarUrl}}">
+        <input type="url" name="avatarUrl" placeholder="http://" value="{{instructor.avatarUrl}}"/>
     </div>
 </div>
 
 <div class="item">
     <div>Instrutor</div>
     <div>
-        <input 
-            type="text"
-            name="name"
-            placeholder="Nome do instutor"
-            value="{{instructor.name}}">
+        <input type="text" name="name" placeholder="Nome do instrutor" value="{{instructor.name}}"/>
     </div>
 </div>
 
 <div class="item">
     <div>Data de nascimento</div>
     <div>
-        <input 
-        type="date"
-        name="birth"
-        value="{{instructor.birth}}">
+        <input type="date" name="birth" value="{{instructor.birth}}">
     </div>
 </div>
 
@@ -34,21 +23,12 @@
     <div>Sexo</div>
     <div>
         <span>
-            <input 
-                type="radio"
-                name="gender"
-                value="M"
-                {% if instructor.gender == 'M' %} checked {% endif %}>
-            Masculino        
+            <input type="radio" name="gender" value="M" {% if instructor.gender == 'M' %} checked="checked" {% endif %}>
+            Masculino
         </span>
         <span>
-            <input 
-                checked
-                type="radio"
-                name="gender"
-                value="F"
-                {% if instructor.gender == 'F' %} checked {% endif %}>
-            Feminino        
+            <input checked="checked" type="radio" name="gender" value="F" {% if instructor.gender == 'F' %} {% endif %}>
+            Feminino
         </span>
     </div>
 </div>
@@ -56,11 +36,7 @@
 <div class="item">
     <div>Área de atuação</div>
     <div>
-    <input 
-        type="text"
-        name="services"
-        placeholder="Separe as áreas de atuação por vírgula"
-        value="{{instructor.services}}">
+        <input type="text" name="services" placeholder="Separe as áreas de atuação por vírgula" value="{{instructor.services}}">
     </div>
 </div>
 

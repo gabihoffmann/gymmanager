@@ -5,24 +5,26 @@
       <a href="/instructors/create">Novo</a>
       <table>
          <thead>
-               <tr>
-                  <th>Instrutor</th>
-                  <th>Especialidades</th>
-                  <th>Ação</th>
-               </tr>
+            <tr>
+               <th>Instrutor</th>
+               <th>Especialidades</th>
+               <th>Ação</th>
+            </tr>
          </thead>
          <tbody>
             {% for instructor in instructors %}
-            <tr>
-               <td>
-                  <span style="background-image: url({{instructor.avatarUrl}})"></span>{{instructor.name}}</td>
-               <td>
-                  {% for service in instructor.services %}
-                     <span>{{service}}</span>
-                  {% endfor %}
-               </td>
-               <td><a href="/instructors/{{instructor.id}}">Ver</a></td>
-            </tr>
+               <tr>
+                  <td>
+                     <span style="background-image: url({{instructor.avatarUrl}})"></span>{{instructor.name}}</td>
+                  <td>
+                     {% for service in instructor.services %}
+                        <span>{{service}}</span>
+                     {% endfor %}
+                  </td>
+                  <td>
+                     <a href="/instructors/{{instructor.id}}">Ver</a>
+                  </td>
+               </tr>
             {% endfor %}
          </tbody>
       </table>

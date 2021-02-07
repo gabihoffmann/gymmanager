@@ -1,28 +1,27 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    {% block head %}
-        <title>Gym Manager</title>
-    {% endblock %}
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="/style.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;400&display=swap">
+        {% block head %}
+            <title>Gym Manager</title>
+        {% endblock %}
 
-</head>
+        <link rel="stylesheet" href="/style.css">
 
-<body>
-    <header>
-        <nav class="links">
-            <a id="instructors" href="/instructors">Instructors</a>
-            <a id="members" href="/members">Members</a>
-        </nav>
-    </header>
-    
-    {% block content %}{% endblock %}
-    <script src="/scripts.js"></script>
-</body>
+    </head>
+
+    <body>
+        <header>
+            <nav class="links">
+                <a id="instructors" href="/instructors">Instructors</a>
+                <a id="members" href="/members">Members</a>
+            </nav>
+        </header>
+
+        {% block content %}{% endblock %}
+        <script src="/scripts.js"></script>
+    </body>
 </html>
