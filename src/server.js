@@ -6,7 +6,7 @@ const routes = require(path.resolve(__dirname, "routes", "routes"));
 
 const server = express();
 // habilitando o body request de qualquer tipo
-// server.use(express.urlencoded({ extended: true }));
+server.use(express.urlencoded({ extended: true }));
 server.use(express.static(path.resolve(__dirname, "../public")));
 //sobrescrita de metodo http
 // server.use(methodOverride("_method"));
