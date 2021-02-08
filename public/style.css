@@ -150,8 +150,8 @@ header {
   color: var(--second);
   background-color: var(--shadow);
 }
-/* === FORMS ===  */
 
+/* === FORM ===  */
 input,
 select {
   width: 100%;
