@@ -1,7 +1,7 @@
 const express = require("express");
 const routes = express.Router();
 
-// const instructors = require('../app/controllers/instructors')
+const instructors = require("../app/controllers/instructors");
 // const members  = require('../app/controllers/members')
 
 routes.get("/", (req, res) => {
@@ -11,24 +11,11 @@ routes.get("/", (req, res) => {
 routes.get("/instructors", (req, res) => {
   res.render("instructors/index");
 });
-routes.get("/instructors/create", (req, res) => {
-  res.render("instructors/create");
-});
-// routes.get("/instructors/create", instructors.create);
+routes.get("/instructors/create", instructors.create);
 // routes.get('/instructors/:id', instructors.show)
 // routes.get('/instructors/:id/edit', instructors.edit)
-// routes.post('/instructors', instructors.post)
-routes.post("/instructors", (req, res) => {
-  const keys = Object.keys(req.body);
+routes.post("/instructors", instructors.post);
 
-  for (key of keys) {
-    if (req.body[key] == "") {
-      return res.send("Please, fill all fields");
-    }
-  }
-
-  return res.send(req.body);
-});
 // routes.put('/instructors', instructors.put)
 // routes.delete('/instructors', instructors.delete)
 //Members

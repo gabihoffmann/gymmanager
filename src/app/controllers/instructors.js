@@ -1,63 +1,56 @@
-const Intl = require('intl')
-const {age, date} = require('../../lib/utils')
-
+const Intl = require("intl");
+const { age, date } = require("../../lib/utils");
 
 module.exports = {
-    index(req,res){
-        const instructors = data.instructors.map(instructor => instructor = {
-            ... instructor,
-            services: instructor.services.split(',')
-    })
+  index(req, res) {
+    const instructors = data.instructors.map(
+      (instructor) =>
+        (instructor = {
+          ...instructor,
+          services: instructor.services.split(","),
+        })
+    );
 
-    return res.render('instructors/index', {instructors})
-    },
+    return res.render("instructors/index", { instructors });
+  },
 
-    create(req,res){
-        res.render('instructors/create')
-    },
+  create(req, res) {
+    res.render("instructors/create");
+  },
 
-    post(req,res){
-        const keys = Object.keys(req.body)
-    
-        for(key of keys){
-           if (req.body[key] === "")
-            return res.send("Please, fill all fields")
-        }
-    
-        let {avatarUrl,name,birth,gender,services} = req.body
+  post(req, res) {
+    const keys = Object.keys(req.body);
 
-        return
-    },
+    for (key of keys) {
+      if (req.body[key] === "") return res.send("Please, fill all fields");
+    }
 
-    show(req,res){
-        return 
-    },
+    let { avatarUrl, name, birth, gender, services } = req.body;
 
-    edit(req,res){
-        return
-    },
+    return res.send(req.body);
+  },
 
-    put(req,res){
-        const keys = Object.keys(req.body)
-    
-        for(key of keys){
-           if (req.body[key] === "")
-            return res.send("Please, fill all fields")
-        }
-    
-        let {avatarUrl,name,birth,gender,services} = req.body
+  show(req, res) {
+    return;
+  },
 
-        return
-    },
-    
-    delete(req,res){
-        return
-    },
-}
+  edit(req, res) {
+    return;
+  },
 
+  put(req, res) {
+    const keys = Object.keys(req.body);
 
+    for (key of keys) {
+      if (req.body[key] === "") return res.send("Please, fill all fields");
+    }
 
+    let { avatarUrl, name, birth, gender, services } = req.body;
 
+    return;
+  },
 
-
-
+  delete(req, res) {
+    return;
+  },
+};
