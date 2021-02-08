@@ -19,7 +19,15 @@ routes.get("/instructors/create", (req, res) => {
 // routes.get('/instructors/:id/edit', instructors.edit)
 // routes.post('/instructors', instructors.post)
 routes.post("/instructors", (req, res) => {
-  res.send("recebido");
+  const keys = Object.keys(req.body);
+
+  for (key of keys) {
+    if (req.body[key] == "") {
+      return res.send("Please, fill all fields");
+    }
+  }
+
+  return res.send(req.body);
 });
 // routes.put('/instructors', instructors.put)
 // routes.delete('/instructors', instructors.delete)
