@@ -48,7 +48,15 @@ module.exports = {
   },
 
   show(req, res) {
-    return;
+    const { id } = req.params;
+
+    const instructor = data.instructors.find(
+      (instructor) => instructor.id == id
+    );
+
+    if (!instructor) return res.send(`Instructor not found!`);
+
+    return res.render("instructors/show", { instructor });
   },
 
   edit(req, res) {
