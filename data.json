@@ -2,20 +2,29 @@
   "instructors": [
     {
       "id": 1,
-      "avatarUrl": "http://www.asdflsdf.com",
-      "name": "asdfadf",
+      "avatarUrl": "https://images.unsplash.com/photo-1554244933-d876deb6b2ff?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=800&q=80",
+      "name": "Princesa Jujuba",
       "birth": 973735200000,
       "gender": "F",
-      "services": "ado,jjkkj",
+      "services": "yoga,pilates",
       "created_at": 1612868643550
     },
     {
       "id": 2,
-      "avatarUrl": "http://www.asdflsdf.com",
-      "name": "asdfadf",
-      "birth": 973735200000,
+      "avatarUrl": "https://images.unsplash.com/photo-1584380931214-dbb5b72e7fd0?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=774&q=80",
+      "name": "Princesa Fogo",
+      "birth": 973735222000,
       "gender": "F",
-      "services": "ado,jjkkj",
+      "services": "cross-fit, muay thai",
+      "created_at": 1612868643550
+    },
+    {
+      "id": 3,
+      "avatarUrl": "https://images.unsplash.com/photo-1483721310020-03333e577078?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=800&q=80",
+      "name": "Finn Mertens",
+      "birth": 874733222001,
+      "gender": "M",
+      "services": "corrida, musculação",
       "created_at": 1612868643550
     }
   ]
