@@ -50,11 +50,16 @@ module.exports = {
   show(req, res) {
     const { id } = req.params;
 
-    const instructor = data.instructors.find(
-      (instructor) => instructor.id == id
-    );
+    let instructor = data.instructors.find((instructor) => instructor.id == id);
 
     if (!instructor) return res.send(`Instructor not found!`);
+
+    instructor = {
+      ...instructor,
+      age: age(instructor.birth),
+      services: instructor.services.split(","),
+      created_at: Intl.DateTimeFormat("pt-BR").format(instructor.created_at),
+    };
 
     return res.render("instructors/show", { instructor });
   },
