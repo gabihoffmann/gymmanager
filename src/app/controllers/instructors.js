@@ -4,6 +4,13 @@ const { age, date } = require("../../lib/utils");
 const fs = require("fs");
 const data = require("../../../data.json");
 
+const searchInstructor = (id) =>
+  data.instructors.find((instructor) => instructor.id == id);
+
+const messages = {
+  NOT_FOUND: "Instructor not found!",
+};
+
 module.exports = {
   index(req, res) {
     const instructors = data.instructors.map(
@@ -65,7 +72,13 @@ module.exports = {
   },
 
   edit(req, res) {
-    return;
+    const { id } = req.params;
+
+    let instructor = searchInstructor(id);
+
+    if (!instructor) return res.send(messages.NOT_FOUND);
+
+    return res.render("instructors/edit", { instructor });
   },
 
   put(req, res) {
