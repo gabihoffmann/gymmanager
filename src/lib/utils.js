@@ -1,39 +1,39 @@
 module.exports = {
-    age(timestamp){
-        const today = new Date()
-        const birthday = new Date(timestamp)
+  age(timestamp) {
+    const today = new Date();
+    const birthday = new Date(timestamp);
 
-        let age = today.getFullYear() - birthday.getFullYear()
-        const month = today.getMonth() - birthday.getMonth()
-        
-        if(month < 0 || month == 0 && today.getDate() <= birthday.getDate()){
-            age--
-        }
+    let age = today.getFullYear() - birthday.getFullYear();
+    const month = today.getMonth() - birthday.getMonth();
 
-        return age
-    },
+    if (month < 0 || (month == 0 && today.getDate() <= birthday.getDate())) {
+      age--;
+    }
 
-    date(timestamp){
-        const date = new Date(timestamp)
+    return age;
+  },
 
-        const year = date.getUTCFullYear()
-        const month = `0${date.getUTCMonth() + 1}`.slice(-2)
-        const day = `0${date.getUTCDate()}`.slice(-2)
+  date(timestamp) {
+    const date = new Date(timestamp);
+    //yyyy
+    const year = date.getUTCFullYear();
+    // mm
+    // remember month return 0 to 11, so add 1
+    const month = `0${date.getUTCMonth() + 1}`.slice(-2);
+    const day = `0${date.getUTCDate()}`.slice(-2);
 
-        return {
-            iso: `${year}-${month}-${day}`,
-            birthDay: `${day}/${month}`
-        }
+    return {
+      iso: `${year}-${month}-${day}`,
+      birthDay: `${day}/${month}`,
+    };
+  },
 
-    },
+  blood(type) {
+    let rh = type[type.length - 1];
+    let blood = type.slice(0, type.length - 1);
 
-    blood(type){
-        let rh = type[type.length-1]
-        let blood = type.slice(0,(type.length -1))
+    rh == 1 ? (rh = "+") : (rh = "-");
 
-        rh == 1 ? rh = '+' : rh = '-'
-        
-        
-        return blood+rh
-    },
-}
+    return blood + rh;
+  },
+};
