@@ -1,15 +1,15 @@
 const path = require("path");
 const express = require("express");
 const nunjucks = require("nunjucks");
-// const methodOverride = require("method-override");
+const methodOverride = require("method-override");
 const routes = require(path.resolve(__dirname, "routes", "routes"));
 
 const server = express();
 // habilitando o body request de qualquer tipo
 server.use(express.urlencoded({ extended: true }));
 server.use(express.static(path.resolve(__dirname, "../public")));
-//sobrescrita de metodo http
-// server.use(methodOverride("_method"));
+//sobrescrita de método http (permitindo PUT e DELETE)
+server.use(methodOverride("_method"));
 server.use(routes);
 
 server.set("view engine", "njk");

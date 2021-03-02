@@ -2,20 +2,20 @@
 
 {% block content %}
   <div class="card">
-    <section 
-      class="avatar"
-      style="background: url({{instructor.avatarUrl}}) no-repeat center center / cover">
-    </section>
+    <section class="avatar" style="background: url({{instructor.avatarUrl}}) no-repeat center center / cover"></section>
 
     <section class="details">
       {# Sobrescrita do metodo POST por PUT com o middleware method-override#}
       <form action="/instructors?_method=PUT" method="POST">
         <h3>Editar Instrutor</h3>
         {% include 'instructors/fields.njk' %}
+        {# Enviando o campo do ID para a rota de PUT #}
         <input type="hidden" name="id" value="{{instructor.id}}">
       </form>
 
+      {# Sobrescrita do metodo POST por DELETE com o middleware method-override#}
       <form id='form-delete' action="/instructors?_method=DELETE" method="post">
+        {# Enviando o campo do ID para a rota de DELETE #}
         <input type="hidden" name="id" value="{{instructor.id}}">
         <button type="submit">Excluir</button>
       </form>
