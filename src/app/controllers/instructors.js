@@ -4,11 +4,21 @@ const { age, date } = require("../../lib/utils");
 const fs = require("fs");
 const data = require("../../../data.json");
 
-const searchInstructor = (id) =>
-  data.instructors.find((instructor) => instructor.id == id);
+const searchInstructor = (id) => {
+  let index = 0;
+  let instructor = data.instructors.find((instructor, foundIndex) => {
+    if (instructor.id == id) {
+      index = foundIndex;
+      return true;
+    }
+  });
+
+  return { instructor, index };
+};
 
 const messages = {
   NOT_FOUND: "Instructor not found!",
+  EMPTY_FIELD: "Please, fill all fields",
 };
 
 module.exports = {
@@ -32,7 +42,7 @@ module.exports = {
     const keys = Object.keys(req.body);
 
     for (key of keys) {
-      if (req.body[key] === "") return res.send("Please, fill all fields");
+      if (req.body[key] === "") return res.send(messages.EMPTY_FIELD);
     }
 
     let { avatarUrl, name, birth, gender, services } = req.body;
@@ -74,26 +84,54 @@ module.exports = {
   edit(req, res) {
     const { id } = req.params;
 
-    let instructor = searchInstructor(id);
+    let { instructor } = searchInstructor(id);
 
     if (!instructor) return res.send(messages.NOT_FOUND);
+
+    instructor = {
+      ...instructor,
+      birth: date(instructor.birth).iso,
+    };
 
     return res.render("instructors/edit", { instructor });
   },
 
   put(req, res) {
-    const keys = Object.keys(req.body);
+    const { id } = req.body;
 
-    for (key of keys) {
-      if (req.body[key] === "") return res.send("Please, fill all fields");
-    }
+    let { instructor, index } = searchInstructor(id);
 
-    let { avatarUrl, name, birth, gender, services } = req.body;
+    if (!instructor) return res.send(messages.NOT_FOUND);
 
-    return;
+    instructor = {
+      ...instructor,
+      ...req.body,
+      birth: Date.parse(req.body.birth),
+    };
+
+    data.instructors[index] = instructor;
+
+    fs.writeFile("data.json", JSON.stringify(data, null, 2), function (error) {
+      if (error) res.send("Write file error");
+
+      return res.redirect(`/instructors/${id}`);
+    });
   },
 
   delete(req, res) {
-    return;
+    const { id } = req.body;
+
+    const filteredInstructors = data.instructors.filter(
+      (instructor) => instructor.id != id
+    );
+
+    console.log(filteredInstructors);
+    data.instructors = filteredInstructors;
+
+    fs.writeFile("data.json", JSON.stringify(data, null, 2), function (error) {
+      if (error) res.send("Write file error");
+
+      return res.redirect("/instructors");
+    });
   },
 };
